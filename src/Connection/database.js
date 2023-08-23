@@ -13,7 +13,7 @@ app.use(bodyParsar.json())
 app.use(express.json())
 
 const db = require('./connection')
- const admin_page_list_all = require('../Model/Admin_Model/Admin_page_list_Model')
+//  const admin_page_list_all = require('../Model/Admin_Model/Admin_page_list_Model')
 
 
 
@@ -21,9 +21,16 @@ const db = require('./connection')
 
 // router.get("/", admin_page_list_all);
 
+const admin_page_list_all = (req, res) => {
+    const data = "select * from 	admin_page_list";
+    db.query(data, function (error, result) {
+        if (error) throw error;
+        res.json(result)
+    })
+}
 
 
-// app.use('/all-admin', admin_page_list_all)
+app.get('/all-admin', admin_page_list_all)
 
 
 // db.connect(function(error){
