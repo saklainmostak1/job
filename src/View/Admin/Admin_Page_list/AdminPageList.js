@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { HiTrash, HiEye, HiPencilAlt } from "react-icons/hi";
+import { Link } from 'react-router-dom';
+import './style.css'
 
-const AllUser = () => {
+
+
+const AdminPageList = () => {
+
     
+  
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(10)
 
     const [adminPageList, setAdminPageList] = useState([])
     useEffect(() => {
-      fetch('http://localhost:5002/allUsers')
+      fetch('https://jsonplaceholder.typicode.com/todos')
         .then(Response => Response.json())
         .then(data => setAdminPageList(data))
     }, [])
@@ -17,7 +22,7 @@ const AllUser = () => {
 
     const lastPostIndex = currentPage * postsPerPage
     const firstPosIndex = lastPostIndex - postsPerPage
-    const allUsers = adminPageList.slice(firstPosIndex, lastPostIndex)
+    const allAdmins = adminPageList?.slice(firstPosIndex, lastPostIndex)
   
     let totalPosts = adminPageList.length
     let pages = []
@@ -25,6 +30,8 @@ const AllUser = () => {
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
       pages.push(i)
     }
+
+
     return (
         <div>
 
@@ -53,19 +60,15 @@ const AllUser = () => {
                             <tr className=''>
                                 <th className="bg-white "></th>
                                 <th className="bg-white">Name</th>
-                                <th className="bg-white">Email</th>
-                                <th className="bg-white">Mobile</th>
-                                <th className="bg-white">Role</th>
-                                <th className="bg-white">Created date</th>
-                                <th className="bg-white">Modified date</th>
-        
+                                <th className="bg-white">controller name</th>
+                              
                                 <th className="bg-white ">Options</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 
-                                allUsers?.map((allUser, i) =>
+                                allAdmins?.map((allUser, i) =>
 
                                     <tr className=''>
                                         <td>
@@ -75,7 +78,7 @@ const AllUser = () => {
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {allUser.full_name}
+                                                    {allUser.display_name}
                                                 </p>
                                           
                                         </td>
@@ -83,35 +86,7 @@ const AllUser = () => {
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {allUser.email}
-                                                </p>
-                                          
-                                        </td>
-                                        <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.mobile}
-                                                </p>
-                                          
-                                        </td>
-                                        <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.role_name}
-                                                </p>
-                                          
-                                        </td>
-                                        <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.created_date}
-                                                </p>
-                                          
-                                        </td>
-                                        <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.modified_date}
+                                                    {allUser.controller_name}
                                                 </p>
                                           
                                         </td>
@@ -193,4 +168,4 @@ const AllUser = () => {
     );
 };
 
-export default AllUser;
+export default AdminPageList;

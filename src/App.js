@@ -1,14 +1,20 @@
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { RouterProvider } from 'react-router-dom';
-import { router } from './Routes/Router/Router';
+import { BrowserRouter, Link, NavLink, Outlet, Route, RouterProvider, Routes } from 'react-router-dom';
+import Navbar from './View/Admin_tamplate/Navbar/Navbar';
+import { router } from './Connection/Router';
+
+
+
+
 
 function App() {
 
+
   return (
-    <div className="">
-<RouterProvider router={router} ></RouterProvider>
+    <div>
+    
+   <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
