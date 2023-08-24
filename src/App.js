@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import { BrowserRouter, Link, NavLink, Outlet, Route, RouterProvider, Routes } from 'react-router-dom';
-import Navbar from './View/Admin_tamplate/Navbar/Navbar';
+import {  RouterProvider, Routes } from 'react-router-dom';
+
 import { router } from './Connection/Router';
 
 
