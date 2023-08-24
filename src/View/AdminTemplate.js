@@ -59,11 +59,11 @@ const AdminTemplate = () => {
                             Admin Page List
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to='/allUsers'>
                             All User List
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to='/api/all-user/user-role'>
                             User Role
