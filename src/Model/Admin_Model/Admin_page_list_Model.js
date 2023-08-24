@@ -19,24 +19,7 @@ module.exports.getAlladminList = (req, res) => {
     })
 }
 
-module.exports.getSingleAdminList = (req, res) => {
 
-    const id = req.params.id
-    const data = db.query("select * from 	admin_page_list where id = " + id);
-
-    db.query(data, function (error, result) {
-        console.log(result)
-        if (error) {
-            console.log(error)
-        }
-
-        else {
-            res.send(result)
-        }
-
-    })
-
-}
 
 
 

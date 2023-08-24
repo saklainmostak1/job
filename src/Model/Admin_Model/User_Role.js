@@ -4,8 +4,8 @@ const app = express()
 
 app.use(express.json())
 
-module.exports.userPermission = (req, res) => {
-    const data = "select * from 	user_role_permission";
+module.exports.userRole = (req, res) => {
+    const data = "select * from 	user_role";
     db.query(data, function (error, result) {
         console.log(result)
         if (error) {

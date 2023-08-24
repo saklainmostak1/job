@@ -65,12 +65,12 @@ const AdminTemplate = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to='/user-role'>
+                        <Link to='/api/all-user/user-role'>
                             User Role
                         </Link>
                     </li>
                     <li>
-                        <Link to='/role-permission'>
+                        <Link to='/api/all-user/permission-list'>
                             User Role Permission
                         </Link>
                     </li>
