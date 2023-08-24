@@ -6,6 +6,7 @@ const express = require('express'),
 
 
 const adminList = require('../Model/Admin_Model/Admin_page_list_Model')
+const userRole = require('../Model/Admin_Model/user_role_permission_Modal')
 
 router.get('/',  async(req, res) => {
 
@@ -14,10 +15,11 @@ router.get('/',  async(req, res) => {
 
 
 })
-router.get('/:id',  async(req, res) => {
+router.get('/',  async(req, res) => {
 
-   const singleAdmin = await adminList.getSingleAdminList(req.params.id)
-   res.send(singleAdmin)
+ 
+    const alUserPer = await userRole.userPermission()
+    res.send(alUserPer)
 
 
 })

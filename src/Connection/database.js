@@ -11,10 +11,13 @@ app.use(bodyParsar.json())
 app.use(express.json())
 
 const connections = require('./connection'),
-alladminList = require('../Model/Admin_Model/Admin_page_list_Model')
+alladminList = require('../Model/Admin_Model/Admin_page_list_Model'),
+userRolePermission = require('../Model/Admin_Model/user_role_permission_Modal')
 
 
 app.use('/all-admin-list', alladminList.getAlladminList)
+app.use('/all-user-permission', userRolePermission.userPermission)
+
 // app.use('/all-admin/all-admin-list/all', alladminList.getAllList)
 // const database = require('../Model/Admin_Model/Admin_page_list_Model')
 // console.log(database)
