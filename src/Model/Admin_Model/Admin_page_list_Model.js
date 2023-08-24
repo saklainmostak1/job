@@ -1,76 +1,74 @@
 const db = require('../../Connection/connection')
+const express = require('express')
+const app = express()
 
+app.use(express.json())
 
-const admin_page_list_all = (req, res) => {
+module.exports.getAlladminList = (req, res) => {
     const data = "select * from 	admin_page_list";
     db.query(data, function (error, result) {
-        if (error) throw error;
-        return res.json(result)
+        console.log(result)
+        if (error) {
+            console.log(error)
+        }
+
+        else {
+            res.send(result)
+        }
+
     })
 }
 
-const admin_page_list_single = (req, res) => {
-    const data = "select * from users";
+module.exports.getSingleAdminList = (req, res) => {
+
+    const id = req.params.id
+    const data = db.query("select * from 	admin_page_list where id = " + id);
+
     db.query(data, function (error, result) {
-        if (error) throw error;
-        return res.json(result)
+        console.log(result)
+        if (error) {
+            console.log(error)
+        }
+
+        else {
+            res.send(result)
+        }
+
     })
+
 }
 
 
 
-
-
-
-//  function admin_page_list_create(req, res) {
-//     const data = "select * from 	admin_page_list";
+// module.exports.getAlladminList = (req, res) => {
+//     const data = "select * from 	student_details";
 //     db.query(data, function (error, result) {
 //         if (error) throw error;
-//         return res.json(result)
-//     })
-// }
-//  function admin_page_list_create(req, res) {
-//     const data = "select * from 	admin_page_list";
-//     db.query(data, function (error, result) {
-//         if (error) throw error;
-//         return res.json(result)
-//     })
-// https://jenilgajjar.medium.com/crud-operation-using-node-js-and-express-js-a0d63a2216aa
-// }
-//  function admin_page_list_edit(req, res) {
-//     const data = "select * from 	admin_page_list";
-//     db.query(data, function (error, result) {
-//         if (error) throw error;
-//         return res.json(result)
-//     })
-// }
-//  function admin_page_list_delete(req, res) {
-//     const data = "select * from 	admin_page_list";
-//     db.query(data, function (error, result) {
-//         if (error) throw error;
-//         return res.json(result)
-//     })
-// }
-
-//  function admin_page_list_single(req, res) {
-//     const data = "select * from 	admin_page_list";
-//     db.query(data, function (error, result) {
-//         if (error) throw error;
+//         console.log(result, 'nayan')
 //         return res.json(result)
 //     })
 // }
 
 
-module.exports = admin_page_list_all
-module.exports = admin_page_list_single
+// const admin_page_list_single = (req, res) => {
+//     const datas = "select * from users";
+//     db.query(datas, function (error, results) {
+//         if (error) throw error;
+//         console.log(results, 'nayan')
+//         return res.json(results)
+//     })
+// }
 
-// admin_page_list_all()
+
+// module.exports = {admin_page_list_all, admin_page_list_single}
 
 
-    // admin_page_list_single,
-    // admin_page_list_create,
-    // admin_page_list_edit,
-    // admin_page_list_delete,
+
+
+
+
+
+
 
 
 

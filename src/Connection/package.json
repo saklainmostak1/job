@@ -6,6 +6,7 @@
   "start": "node database.js",
   "start2": "node connection.js",
   "start3": "node Admin_page_list_Model.js",
+  "start4": "node dbRouter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

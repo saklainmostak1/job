@@ -12,7 +12,7 @@ const AdminPageList = () => {
 
     const [adminPageList, setAdminPageList] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5002/admin/admin-page-list/admin-page-list-all')
+        fetch('http://localhost:5002/all-admin-list')
             .then(Response => Response.json())
             .then(data => setAdminPageList(data))
     }, [])

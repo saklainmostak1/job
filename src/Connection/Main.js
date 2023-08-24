@@ -1,12 +1,11 @@
 import React from 'react';
-import Navbar from '../View/Admin_tamplate/Navbar/Navbar';
-import Footer from '../View/Admin_tamplate/Footer/Footer';
+import AdminTemplate from '../View/AdminTemplate';
 
 const Main = () => {
     return (
         <div>
-            <Navbar></Navbar>
-            <Footer></Footer>
+           <AdminTemplate></AdminTemplate>
+          
         </div>
     );
 };

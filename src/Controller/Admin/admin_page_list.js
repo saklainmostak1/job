@@ -1,12 +1,13 @@
 
 import React from 'react';
-import AdminPageLIst from '../../View/AdminTemplate'
+import AdminPageList from '../../View/Admin/Admin_Page_list/AdminPageList';
+
 
 
 const admin_page_list = () => {
     return (
         <div>
-           <AdminPageLIst></AdminPageLIst>
+            <AdminPageList></AdminPageList>
         </div>
     );
 };

@@ -18,7 +18,7 @@
 //         console.log(result)
 //     })
 // });
-
+// db
 
 var mysql = require('mysql');
 var connections = mysql.createConnection({
@@ -34,5 +34,15 @@ connections.connect(function(error){
 		console.log('Database Connected Successfully..!!');
 	}
 });
+// connections.connect(function (error) {
+//     if (error) throw error;
+//     console.log('connect')
+//     connections.query("select * from student_details", function (error, result) {
+//         if (error) throw error;
+//         console.log(result.map(res => res.Name))
+//         console.log(result)
+//     })
+// });
+
 
 module.exports = connections;
