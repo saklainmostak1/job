@@ -36,6 +36,25 @@ const userRolePermission = {
         catch (error) {
             console.log(error)
         }
+    },
+
+    UpdateSingleUser: async (req, res) => {
+        try {
+            const { name, description, price } = req.body;
+            const query = 'UPDATE user_role_permission SET name = ?, description = ?, price = ? WHERE id = ?';
+            connection.query(query, [name, description, price, req.params.id], (error, result) => {
+              if (!error && result.affectedRows > 0) {
+                console.log(result);
+                return res.send(result);
+              } else {
+                console.log(error || 'Product not found');
+                return res.status(404).json({ message: 'Product not found.' });
+              }
+            });
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
 }

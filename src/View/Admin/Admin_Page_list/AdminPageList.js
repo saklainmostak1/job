@@ -70,7 +70,7 @@ const AdminPageList = () => {
 
                                         <tr className=''>
                                             <td>
-                                                {i + 1}
+                                                {i+ 1}
                                             </td>
 
                                             <td>
@@ -149,9 +149,8 @@ const AdminPageList = () => {
                                     key={index + 1}
                                     onClick={() => setCurrentPage(page)}
                                     className=
-
                                     {page === currentPage ? 'active' : ''}
-                                >{page}</button>
+                                >{page }</button>
                             )
                         }
 
