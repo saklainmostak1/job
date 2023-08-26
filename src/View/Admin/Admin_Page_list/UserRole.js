@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { HiTrash, HiEye, HiPencilAlt } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 
-const UserRolePermission = () => {
+const UserRole = () => {
 
-    
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(10)
 
     const [adminPageList, setAdminPageList] = useState([])
     useEffect(() => {
-      fetch('http://localhost:5002/all-user-permission')
+      fetch('')
         .then(Response => Response.json())
         .then(data => setAdminPageList(data))
     }, [])
@@ -26,8 +25,6 @@ const UserRolePermission = () => {
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
       pages.push(i)
     }
-
-
     return (
         <div>
 
@@ -51,13 +48,14 @@ const UserRolePermission = () => {
             <div className="mt-8 bg-white p-7 rounded-xl">
 
                 <div className="overflow-x-auto">
-                    <table className="table w-full">
+                    <table className="table">
                         <thead className="bg-white">
                             <tr className=''>
                                 <th className="bg-white "></th>
-                                <th className="bg-white">User Role Id</th>
-                                <th className="bg-white">User Page List Id</th>
-                                <th className="bg-white">User Default Page</th>
+                                <th className="bg-white">Role Name</th>
+                                <th className="bg-white">Status</th>
+                                <th className="bg-white">Created_date</th>
+                                <th className="bg-white">Modified date</th>
                               
                                 <th className="bg-white ">Options</th>
                             </tr>
@@ -75,7 +73,14 @@ const UserRolePermission = () => {
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {allUser.user_role_id}
+                                                    {allUser.role_name}
+                                                </p>
+                                          
+                                        </td>
+                                        <td>
+                                            
+                                                <p className=" text-sm">
+                                                    {allUser.status}
                                                 </p>
                                           
                                         </td>
@@ -83,14 +88,14 @@ const UserRolePermission = () => {
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {allUser.user_page_list_id.slice(0,30) + '...'}
+                                                    {allUser.created_date}
                                                 </p>
                                           
                                         </td>
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {allUser.user_default_page}
+                                                    {allUser.modified_date}
                                                 </p>
                                           
                                         </td>
@@ -172,4 +177,4 @@ const UserRolePermission = () => {
     );
 };
 
-export default UserRolePermission;
+export default UserRole;
