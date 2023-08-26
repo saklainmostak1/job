@@ -7,12 +7,12 @@ var connections = mysql.createConnection({
 });
 connections.query(function (error) {
   if (!!error) {
-    const data = "select * from 	admin_page_list";
+    const data = "select * from 	student_details";
     connections.query(data, function (error, result) {
       console.log(result)
     })
   } else {
-    console.log(error, 'Error')
+   console.log(error, 'Error')
   }
 });
 // connections.query(

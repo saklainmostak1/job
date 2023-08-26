@@ -1,16 +1,16 @@
-const connections = require('../../Connection/connection')
+const connection = require('../../Connection/connection')
 const post = {
     getAll: async (req, res) => {
         try {
             const data = "select * from 	admin_page_list";
-            connections.query(data, function (error, result) {
+            connection.query(data, function (error, result) {
                 console.log(result)
-                if (error) {
-                    console.log(error)
-                }
-
-                else {
+                if (!error) {
                     res.send(result)
+                }
+                
+                else {
+                    console.log(error)
                 }
 
             })
@@ -23,7 +23,7 @@ const post = {
     getSingle: async (req, res) => {
         try {
             const query = 'SELECT * FROM admin_page_list WHERE id = ?';
-            connections.query(query, [req.params.id], (error, result) => {
+            connection.query(query, [req.params.id], (error, result) => {
                 if (!error && result.length > 0) {
                     console.log(result);
                     return res.send(result);

@@ -14,9 +14,16 @@ app.use(express.json())
 
 
 const router = require('./dbRouter')
+const userRouter = require('./userRouter')
 
-app.use('/api/get-all', router)
+app.use('/admin', router)
+app.use('/user', userRouter)
 
+
+
+app.get('/', async(req, res) => {
+    res.send('server run')
+})
 
 app.listen(port, (req, res) => {
     console.log('api is running on', port);

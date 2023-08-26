@@ -1,58 +1,44 @@
-const db = require('../../Connection/connection')
-const express = require('express')
-const app = express()
+const connection = require('../../Connection/connection')
+const userRolePermission = {
+    getAllUser: async (req, res) => {
+        try {
+            const data = "select * from 	user_role_permission";
+            connection.query(data, function (error, result) {
+                console.log(result)
+                if (!error) {
+                  return  res.send(result)
+                }
+                
+                else {
+                    console.log({message: error})
+                }
 
-app.use(express.json())
-
-module.exports.userPermission = (req, res) => {
-    const data = "select * from 	user_role_permission";
-    db.query(data, function (error, result) {
-        console.log(result)
-        if (error) {
+            })
+        }
+        catch (error) {
             console.log(error)
         }
+    },
 
-        else {
-            res.send(result)
+    getSingleUser: async (req, res) => {
+        try {
+            const query = 'SELECT * FROM user_role_permission WHERE id = ?';
+            connection.query(query, [req.params.id], (error, result) => {
+                if (!error && result.length > 0) {
+                    console.log(result);
+                    return res.send(result);
+                } else {
+                    console.log(error || 'Product not found');
+                    return res.status(404).json({ message: 'Product not found.' });
+                }
+            });
         }
+        catch (error) {
+            console.log(error)
+        }
+    }
 
-    })
 }
 
 
-
-
-
-// module.exports.getAlladminList = (req, res) => {
-//     const data = "select * from 	student_details";
-//     db.query(data, function (error, result) {
-//         if (error) throw error;
-//         console.log(result, 'nayan')
-//         return res.json(result)
-//     })
-// }
-
-
-// const admin_page_list_single = (req, res) => {
-//     const datas = "select * from users";
-//     db.query(datas, function (error, results) {
-//         if (error) throw error;
-//         console.log(results, 'nayan')
-//         return res.json(results)
-//     })
-// }
-
-
-// module.exports = {admin_page_list_all, admin_page_list_single}
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = userRolePermission
