@@ -1,48 +1,25 @@
-
-// var mysql = require("mysql")
-
-
-// var mysqlPool = mysql.createConnection({
-//     host: "localhost",
-//     user:"root",
-//     password: "",
-//     database: "college"
-// })
-
-// mysqlPool.connect(function (error) {
-//     if (error) throw error;
-//     console.log('connect')
-//     mysqlPool.query("select * from student_details", function (error, result) {
-//         if (error) throw error;
-//         console.log(result.map(res => res.Name))
-//         console.log(result)
-//     })
-// });
-// db
-
 var mysql = require('mysql');
 var connections = mysql.createConnection({
-	host:'localhost',
-	user:'root',
-	password:'',
-	database:'college'
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'college'
 });
-connections.connect(function(error){
-	if(!!error) {
-		console.log(error);
-	} else {
-		console.log('Database Connected Successfully..!!');
-	}
+connections.query(function (error) {
+  if (!!error) {
+    const data = "select * from 	admin_page_list";
+    connections.query(data, function (error, result) {
+      console.log(result)
+    })
+  } else {
+    console.log(error, 'Error')
+  }
 });
-// connections.connect(function (error) {
-//     if (error) throw error;
-//     console.log('connect')
-//     connections.query("select * from student_details", function (error, result) {
-//         if (error) throw error;
-//         console.log(result.map(res => res.Name))
-//         console.log(result)
-//     })
-// });
-
-
+// connections.query(
+//     'SELECT * FROM  admin_page_list',
+//     function(err, results, fields) {
+//       console.log(results); // results contains rows returned by server
+//       console.log(fields); // fields contains extra meta data about results, if available
+//     }
+//   );
 module.exports = connections;
