@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { HiTrash, HiEye, HiPencilAlt } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 
-const UserRolePermission = () => {
+const AllUsers = () => {
 
-    
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(10)
 
     const [adminPageList, setAdminPageList] = useState([])
     useEffect(() => {
-      fetch('http://localhost:5002/user-permission/all-users-role-permission')
+      fetch('http://localhost:5002/all-users/all-users')
         .then(Response => Response.json())
         .then(data => setAdminPageList(data))
     }, [])
@@ -18,7 +17,7 @@ const UserRolePermission = () => {
 
     const lastPostIndex = currentPage * postsPerPage
     const firstPosIndex = lastPostIndex - postsPerPage
-    const userRolePermission = adminPageList.slice(firstPosIndex, lastPostIndex)
+    const allUsers = adminPageList.slice(firstPosIndex, lastPostIndex)
   
     let totalPosts = adminPageList.length
     let pages = []
@@ -26,6 +25,7 @@ const UserRolePermission = () => {
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
       pages.push(i)
     }
+
 
 
     return (
@@ -51,21 +51,24 @@ const UserRolePermission = () => {
             <div className="mt-8 bg-white p-7 rounded-xl">
 
                 <div className="overflow-x-auto">
-                    <table className="table w-full">
+                    <table className="table">
                         <thead className="bg-white">
                             <tr className=''>
                                 <th className="bg-white "></th>
-                                <th className="bg-white">User Role Id</th>
-                                <th className="bg-white">User Page List Id</th>
-                                <th className="bg-white">User Default Page</th>
-                              
+                                <th className="bg-white">Name</th>
+                                <th className="bg-white">Email</th>
+                                <th className="bg-white">Mobile</th>
+                                <th className="bg-white">Role</th>
+                                <th className="bg-white">Created date</th>
+                                <th className="bg-white">Modified date</th>
+        
                                 <th className="bg-white ">Options</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 
-                                userRolePermission?.map((rolePermission, i) =>
+                                allUsers?.map((allUser, i) =>
 
                                     <tr className=''>
                                         <td>
@@ -75,7 +78,7 @@ const UserRolePermission = () => {
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {rolePermission.user_role_id}
+                                                    {allUser.full_name}
                                                 </p>
                                           
                                         </td>
@@ -83,14 +86,35 @@ const UserRolePermission = () => {
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {rolePermission.user_page_list_id.slice(0,30) + '...'}
+                                                    {allUser.email}
                                                 </p>
                                           
                                         </td>
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {rolePermission.user_default_page}
+                                                    {allUser.mobile}
+                                                </p>
+                                          
+                                        </td>
+                                        <td>
+                                            
+                                                <p className=" text-sm">
+                                                    {allUser.role_name}
+                                                </p>
+                                          
+                                        </td>
+                                        <td>
+                                            
+                                                <p className=" text-sm">
+                                                    {allUser.created_date}
+                                                </p>
+                                          
+                                        </td>
+                                        <td>
+                                            
+                                                <p className=" text-sm">
+                                                    {allUser.modified_date}
                                                 </p>
                                           
                                         </td>
@@ -101,7 +125,7 @@ const UserRolePermission = () => {
                                       
                                         <td className="">
                                             <div className="flex items-center ">
-                                                <Link to={`/allHome/details/${rolePermission.id}`}>
+                                                <Link to={`/allHome/details/${allUser.id}`}>
 
                                                     <label
                                                         className="w-8 h-8 bg-green-200 inline-block rounded-full text-center cursor-pointer group hover:bg-green-500 duration-300 mr-1"
@@ -112,7 +136,7 @@ const UserRolePermission = () => {
                                                         </p>
                                                     </label>
                                                 </Link>
-                                                <Link to={`/dashboard/update/rolePermissions/${rolePermission.id}`}>
+                                                <Link to={`/dashboard/update/allUsers/${allUser.id}`}>
 
                                                     <label
                                                         className="w-8 h-8 bg-blue-200 inline-block rounded-full text-center cursor-pointer group hover:bg-blue-500 duration-300 mr-1"
@@ -127,7 +151,7 @@ const UserRolePermission = () => {
 
 
                                                 <button
-                                                // onClick={() => handleDelete(rolePermission._id)}
+                                                // onClick={() => handleDelete(allUser._id)}
                                                 >
                                                     <label
                                                         className="w-8 h-8 bg-red-200 inline-block rounded-full text-center cursor-pointer group hover:bg-red-500 duration-300 mr-1"
@@ -172,4 +196,4 @@ const UserRolePermission = () => {
     );
 };
 
-export default UserRolePermission;
+export default AllUsers;

@@ -17,7 +17,7 @@ const UserRole = () => {
 
     const lastPostIndex = currentPage * postsPerPage
     const firstPosIndex = lastPostIndex - postsPerPage
-    const allAdmins = adminPageList.slice(firstPosIndex, lastPostIndex)
+    const userRoles = adminPageList.slice(firstPosIndex, lastPostIndex)
   
     let totalPosts = adminPageList.length
     let pages = []
@@ -63,7 +63,7 @@ const UserRole = () => {
                         <tbody>
                             {
                                 
-                                allAdmins?.map((allUser, i) =>
+                                userRoles?.map((userRole, i) =>
 
                                     <tr className=''>
                                         <td>
@@ -73,14 +73,14 @@ const UserRole = () => {
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {allUser.role_name}
+                                                    {userRole.role_name}
                                                 </p>
                                           
                                         </td>
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {allUser.status}
+                                                    {userRole.status}
                                                 </p>
                                           
                                         </td>
@@ -88,14 +88,14 @@ const UserRole = () => {
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {allUser.created_date}
+                                                    {userRole.created_date}
                                                 </p>
                                           
                                         </td>
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {allUser.modified_date}
+                                                    {userRole.modified_date}
                                                 </p>
                                           
                                         </td>
@@ -106,7 +106,7 @@ const UserRole = () => {
                                       
                                         <td className="">
                                             <div className="flex items-center ">
-                                                <Link to={`/allHome/details/${allUser.id}`}>
+                                                <Link to={`/allHome/details/${userRole.id}`}>
 
                                                     <label
                                                         className="w-8 h-8 bg-green-200 inline-block rounded-full text-center cursor-pointer group hover:bg-green-500 duration-300 mr-1"
@@ -117,7 +117,7 @@ const UserRole = () => {
                                                         </p>
                                                     </label>
                                                 </Link>
-                                                <Link to={`/dashboard/update/allUsers/${allUser.id}`}>
+                                                <Link to={`/dashboard/update/userRoles/${userRole.id}`}>
 
                                                     <label
                                                         className="w-8 h-8 bg-blue-200 inline-block rounded-full text-center cursor-pointer group hover:bg-blue-500 duration-300 mr-1"
@@ -132,7 +132,7 @@ const UserRole = () => {
 
 
                                                 <button
-                                                // onClick={() => handleDelete(allUser._id)}
+                                                // onClick={() => handleDelete(userRole._id)}
                                                 >
                                                     <label
                                                         className="w-8 h-8 bg-red-200 inline-block rounded-full text-center cursor-pointer group hover:bg-red-500 duration-300 mr-1"

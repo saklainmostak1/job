@@ -20,7 +20,7 @@ const AdminPageList = () => {
 
     const lastPostIndex = currentPage * postsPerPage
     const firstPosIndex = lastPostIndex - postsPerPage
-    const allAdmins = adminPageList?.slice(firstPosIndex, lastPostIndex)
+    const allAdminsPageList = adminPageList?.slice(firstPosIndex, lastPostIndex)
 
     let totalPosts = adminPageList.length
     let pages = []
@@ -66,17 +66,17 @@ const AdminPageList = () => {
                             <tbody>
                                 {
 
-                                    allAdmins?.map((allUser, i) =>
+                                    allAdminsPageList?.map((admin, i) =>
 
                                         <tr className=''>
                                             <td>
-                                                {i+ 1}
+                                                {i + 1}
                                             </td>
 
                                             <td>
 
                                                 <p className=" text-sm">
-                                                    {allUser.display_name}
+                                                    {admin.display_name}
                                                 </p>
 
                                             </td>
@@ -84,7 +84,7 @@ const AdminPageList = () => {
                                             <td>
 
                                                 <p className=" text-sm">
-                                                    {allUser.controller_name}
+                                                    {admin.controller_name}
                                                 </p>
 
                                             </td>
@@ -95,7 +95,7 @@ const AdminPageList = () => {
 
                                             <td className="">
                                                 <div className="flex items-center ">
-                                                    <Link to={`/allHome/details/${allUser.id}`}>
+                                                    <Link to={`/allHome/details/${admin.id}`}>
 
                                                         <label
                                                             className="w-8 h-8 bg-green-200 inline-block rounded-full text-center cursor-pointer group hover:bg-green-500 duration-300 mr-1"
@@ -106,7 +106,7 @@ const AdminPageList = () => {
                                                             </p>
                                                         </label>
                                                     </Link>
-                                                    <Link to={`/dashboard/update/allUsers/${allUser.id}`}>
+                                                    <Link to={`/dashboard/update/admins/${admin.id}`}>
 
                                                         <label
                                                             className="w-8 h-8 bg-blue-200 inline-block rounded-full text-center cursor-pointer group hover:bg-blue-500 duration-300 mr-1"
@@ -121,14 +121,14 @@ const AdminPageList = () => {
 
 
                                                     <button
-                                                    // onClick={() => handleDelete(allUser._id)}
+                                                    // onClick={() => handleDelete(admin._id)}
                                                     >
                                                         <label
                                                             className="w-8 h-8 bg-red-200 inline-block rounded-full text-center cursor-pointer group hover:bg-red-500 duration-300 mr-1"
                                                             htmlFor=""
                                                         >
                                                             <p className=' mt-2 ml-2 text-red-500 group-hover:text-white duration-300'>
-                                                               <HiTrash></HiTrash>
+                                                                <HiTrash></HiTrash>
                                                             </p>
                                                         </label>
                                                     </button>
@@ -150,7 +150,7 @@ const AdminPageList = () => {
                                     onClick={() => setCurrentPage(page)}
                                     className=
                                     {page === currentPage ? 'active' : ''}
-                                >{page }</button>
+                                >{page}</button>
                             )
                         }
 

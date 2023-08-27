@@ -14,11 +14,11 @@ const LeftSideNav = () => {
                         Admin Page List
                     </Link>
                 </li>
-                {/* <li>
-<Link to='/allUsers'>
-All User List
-</Link>
-</li> */}
+                <li>
+                    <Link to='/api/all-users'>
+                        All Users 
+                    </Link>
+                </li>
                 <li>
                     <Link to='/api/all-user/user-role'>
                         User Role
