@@ -1,58 +1,63 @@
-const db = require('../../Connection/connection')
-const express = require('express')
-const app = express()
+const connection = require('../../Connection/connection')
+const userRolePermission = {
+    getAllUserRole: async (req, res) => {
+        try {
+            const data = "select * from 	user_role";
+            connection.query(data, function (error, result) {
+                console.log(result)
+                if (!error) {
+                    return res.send(result)
+                }
 
-app.use(express.json())
+                else {
+                    console.log({ message: error })
+                }
 
-module.exports.userRole = (req, res) => {
-    const data = "select * from 	user_role";
-    db.query(data, function (error, result) {
-        console.log(result)
-        if (error) {
+            })
+        }
+        catch (error) {
             console.log(error)
         }
+    },
 
-        else {
-            res.send(result)
+    getSingleUseRole: async (req, res) => {
+        try {
+            const query = 'SELECT * FROM user_role WHERE id = ?';
+            connection.query(query, [req.params.id], (error, result) => {
+                if (!error && result.length > 0) {
+                    console.log(result);
+                    return res.send(result);
+                } else {
+                    console.log(error || 'Product not found');
+                    return res.status(404).json({ message: 'Product not found.' });
+                }
+            });
         }
+        catch (error) {
+            console.log(error)
+        }
+    },
 
-    })
+    UpdateSingleUser: async (req, res) => {
+        try {
+            const { name, description, price } = req.body;
+            const query = 'UPDATE user_role_permission SET name = ?, description = ?, price = ? WHERE id = ?';
+            connection.query(query, [name, description, price, req.params.id], (error, result) => {
+                if (!error && result.affectedRows > 0) {
+                    console.log(result);
+                    return res.send(result);
+                } else {
+                    console.log(error || 'Product not found');
+                    return res.status(404).json({ message: 'Product not found.' });
+                }
+            });
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
 }
 
 
-
-
-
-// module.exports.getAlladminList = (req, res) => {
-//     const data = "select * from 	student_details";
-//     db.query(data, function (error, result) {
-//         if (error) throw error;
-//         console.log(result, 'nayan')
-//         return res.json(result)
-//     })
-// }
-
-
-// const admin_page_list_single = (req, res) => {
-//     const datas = "select * from users";
-//     db.query(datas, function (error, results) {
-//         if (error) throw error;
-//         console.log(results, 'nayan')
-//         return res.json(results)
-//     })
-// }
-
-
-// module.exports = {admin_page_list_all, admin_page_list_single}
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = userRolePermission

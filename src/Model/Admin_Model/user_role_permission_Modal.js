@@ -1,6 +1,6 @@
 const connection = require('../../Connection/connection')
 const userRolePermission = {
-    getAllUser: async (req, res) => {
+    getAllUserRolePermission: async (req, res) => {
         try {
             const data = "select * from 	user_role_permission";
             connection.query(data, function (error, result) {
@@ -20,7 +20,7 @@ const userRolePermission = {
         }
     },
 
-    getSingleUser: async (req, res) => {
+    getSingleUserRolePermission: async (req, res) => {
         try {
             const query = 'SELECT * FROM user_role_permission WHERE id = ?';
             connection.query(query, [req.params.id], (error, result) => {

@@ -1,10 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 
-
-import AdminPageList from "../View/Admin/Admin_Page_list/AdminPageList";
-import UserRole from '../View/Admin/Admin_Page_list/UserRole';
-import UserRolePermission from '../View/Admin/Admin_Page_list/UserRolePermission'
 import Main from "../Connection/Main";
+import AdminPageList from "../View/Admin/College/AdminPageList";
+import UserRolePermission from "../View/Admin/College/UserRolePermission";
+import UserRole from "../View/Admin/College/UserRole";
 
 
 

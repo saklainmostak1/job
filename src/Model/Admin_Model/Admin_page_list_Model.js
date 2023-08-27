@@ -1,6 +1,6 @@
 const connection = require('../../Connection/connection')
 const AdminPageListModel = {
-    getAll: async (req, res) => {
+    getAllAdminPageList: async (req, res) => {
         try {
             const data = "select * from 	admin_page_list";
             connection.query(data, function (error, result) {
@@ -20,7 +20,7 @@ const AdminPageListModel = {
         }
     },
 
-    getSingle: async (req, res) => {
+    getSingleAdminPageList: async (req, res) => {
         try {
             const query = 'SELECT * FROM admin_page_list WHERE id = ?';
             connection.query(query, [req.params.id], (error, result) => {

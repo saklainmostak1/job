@@ -9,7 +9,7 @@ const UserRole = () => {
 
     const [adminPageList, setAdminPageList] = useState([])
     useEffect(() => {
-      fetch('')
+      fetch('http://localhost:5002/user-role/all-users-role')
         .then(Response => Response.json())
         .then(data => setAdminPageList(data))
     }, [])

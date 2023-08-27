@@ -15,9 +15,10 @@ app.use(express.json())
 
 const adminPageListRouter = require('../Router/Admin_Page_LIst_Router')
 const userRolePermission = require('../Router/User_Role_Permission_Router')
-
+const userRoloRouter = require('../Router/User_Role_Router')
 app.use('/admin', adminPageListRouter)
 app.use('/user', userRolePermission)
+app.use('/user-role', userRoloRouter)
 
 
 
