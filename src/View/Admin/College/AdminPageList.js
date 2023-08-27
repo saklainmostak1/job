@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { HiTrash, HiEye, HiPencilAlt } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import './style.css'

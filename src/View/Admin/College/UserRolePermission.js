@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { HiTrash, HiEye, HiPencilAlt } from "react-icons/hi";
 import { Link } from 'react-router-dom';
