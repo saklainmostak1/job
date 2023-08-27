@@ -1,4 +1,6 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { HiTrash, HiEye, HiPencilAlt } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 
@@ -8,25 +10,52 @@ const UserRolePermission = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(10)
 
-    const [adminPageList, setAdminPageList] = useState([])
-    useEffect(() => {
-      fetch('http://localhost:5002/user-permission/all-users-role-permission')
-        .then(Response => Response.json())
-        .then(data => setAdminPageList(data))
-    }, [])
-    console.log(adminPageList)
+   
+
+    const { data: userRolesPermissions = [], isLoading, refetch
+    } = useQuery({
+        queryKey: ['userRole'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5002/user-permission/all-users-role-permission`)
+            const data = await res.json()
+            return data
+        }
+    })
+
+
 
     const lastPostIndex = currentPage * postsPerPage
     const firstPosIndex = lastPostIndex - postsPerPage
-    const userRolePermission = adminPageList.slice(firstPosIndex, lastPostIndex)
+    const userRolePermission = userRolesPermissions.slice(firstPosIndex, lastPostIndex)
   
-    let totalPosts = adminPageList.length
+    let totalPosts = userRolesPermissions.length
     let pages = []
   
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
       pages.push(i)
     }
 
+
+       
+    const handleDelete = id => {
+        const proceed = window.confirm('Are You Sure delete')
+        console.log(id)
+        if (proceed) {
+            fetch(`http://localhost:5002/user-permission/all-users-role-permission/${id}`, {
+                method: "DELETE",
+
+            })
+                .then(Response => Response.json())
+                .then(data => {
+                    refetch()
+                    toast.success('Delete Successfully')
+                    console.log(data)
+                    // if (data.deletedCount > 0) {
+                    // }
+
+                })
+        }
+    }
 
     return (
         <div>
@@ -127,7 +156,7 @@ const UserRolePermission = () => {
 
 
                                                 <button
-                                                // onClick={() => handleDelete(rolePermission._id)}
+                                                onClick={() => handleDelete(rolePermission.id)}
                                                 >
                                                     <label
                                                         className="w-8 h-8 bg-red-200 inline-block rounded-full text-center cursor-pointer group hover:bg-red-500 duration-300 mr-1"

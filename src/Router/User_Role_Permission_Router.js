@@ -8,6 +8,7 @@ const userRolePermission = require('../Model/Admin_Model/user_role_permission_Mo
 
 userRouter.get('/all-users-role-permission', userRolePermission.getAllUserRolePermission)
 userRouter.get('/all-users-role-permission/:id', userRolePermission.getSingleUserRolePermission)
+userRouter.delete('/all-users-role-permission/:id', userRolePermission.deleteSingleUserRoleOermission)
 
 
 

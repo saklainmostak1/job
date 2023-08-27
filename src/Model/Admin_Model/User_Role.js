@@ -38,11 +38,11 @@ const userRolePermission = {
         }
     },
 
-    UpdateSingleUser: async (req, res) => {
+
+    deleteSingleUserRole: async (req, res) => {
         try {
-            const { name, description, price } = req.body;
-            const query = 'UPDATE user_role_permission SET name = ?, description = ?, price = ? WHERE id = ?';
-            connection.query(query, [name, description, price, req.params.id], (error, result) => {
+            const query = 'DELETE FROM user_role WHERE id = ?';
+            connection.query(query, [req.params.id], (error, result) => {
                 if (!error && result.affectedRows > 0) {
                     console.log(result);
                     return res.send(result);
@@ -55,7 +55,9 @@ const userRolePermission = {
         catch (error) {
             console.log(error)
         }
-    }
+    },
+
+ 
 
 }
 
