@@ -56,6 +56,7 @@ const userRolePermission = {
             console.log(error)
         }
     },
+    
     deleteSingleUserRoleOermission: async (req, res) => {
         try {
             const query = 'DELETE FROM user_role_permission WHERE id = ?';
