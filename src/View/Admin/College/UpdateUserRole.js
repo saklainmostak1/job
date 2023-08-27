@@ -33,10 +33,10 @@ const { data: userRoleUpdate = [], isLoading, refetch
             .then(Response => Response.json())
             .then(data => {
                 console.log(data)
-                if (data.modifiedCount > 0) {
-                    console.log(data)
-                    toast.success('Successfully Update!');
-                }
+             
+                toast.success('Successfully Update!');
+                // if (data.modifiedCount > 0) {
+                // }
 
             })
     }
@@ -76,6 +76,7 @@ const { data: userRoleUpdate = [], isLoading, refetch
                                         placeholder="Product Name"
                                         type="text"
                                         className="input input-bordered mt-1 w-full rounded-sm"
+                                        required
                                     />
                                 </div>
                                 <div className="mt-6 lg:flex md:flex items-center">
