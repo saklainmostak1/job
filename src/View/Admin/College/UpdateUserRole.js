@@ -34,9 +34,13 @@ const { data: userRoleUpdate = [], isLoading, refetch
             .then(data => {
                 console.log(data)
              
-                toast.success('Successfully Update!');
-                // if (data.modifiedCount > 0) {
-                // }
+                if (data.changedRows > 0) {
+                    refetch()
+                    toast.success('Successfully Update!');
+                }
+                else{
+                    toast.error('Nothing Updated')
+                }
 
             })
     }
