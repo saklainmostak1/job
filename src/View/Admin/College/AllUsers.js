@@ -9,7 +9,7 @@ const AllUsers = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(10)
 
-  
+
 
     const { data: users = [], isLoading, refetch
     } = useQuery({
@@ -29,12 +29,12 @@ const AllUsers = () => {
     const lastPostIndex = currentPage * postsPerPage
     const firstPosIndex = lastPostIndex - postsPerPage
     const allUsers = users.slice(firstPosIndex, lastPostIndex)
-  
+
     let totalPosts = users.length
     let pages = []
-  
+
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-      pages.push(i)
+        pages.push(i)
     }
 
 
@@ -62,7 +62,7 @@ const AllUsers = () => {
 
 
     return (
-        <div>
+
 
         <div className="bg-slate-100 container mx-auto px-5 lg:px-12 py-4">
             <div className="flex items-center justify-between">
@@ -84,7 +84,7 @@ const AllUsers = () => {
             <div className="mt-8 bg-white p-7 rounded-xl">
 
                 <div className="overflow-x-auto">
-                    <table className="table">
+                    <table className="table w-full">
                         <thead className="bg-white">
                             <tr className=''>
                                 <th className="bg-white "></th>
@@ -94,13 +94,13 @@ const AllUsers = () => {
                                 <th className="bg-white">Role</th>
                                 <th className="bg-white">Created date</th>
                                 <th className="bg-white">Modified date</th>
-        
+
                                 <th className="bg-white ">Options</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                
+
                                 allUsers?.map((allUser, i) =>
 
                                     <tr className=''>
@@ -109,53 +109,53 @@ const AllUsers = () => {
                                         </td>
 
                                         <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.full_name}
-                                                </p>
-                                          
-                                        </td>
-                                      
-                                        <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.email}
-                                                </p>
-                                          
-                                        </td>
-                                        <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.mobile}
-                                                </p>
-                                          
-                                        </td>
-                                        <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.role_name}
-                                                </p>
-                                          
-                                        </td>
-                                        <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.created_date}
-                                                </p>
-                                          
-                                        </td>
-                                        <td>
-                                            
-                                                <p className=" text-sm">
-                                                    {allUser.modified_date}
-                                                </p>
-                                          
-                                        </td>
-                                      
-                                        
 
-                                       
-                                      
+                                            <p className=" text-sm">
+                                                {allUser.full_name}
+                                            </p>
+
+                                        </td>
+
+                                        <td>
+
+                                            <p className=" text-sm">
+                                                {allUser.email}
+                                            </p>
+
+                                        </td>
+                                        <td>
+
+                                            <p className=" text-sm">
+                                                {allUser.mobile}
+                                            </p>
+
+                                        </td>
+                                        <td>
+
+                                            <p className=" text-sm">
+                                                {allUser.role_name}
+                                            </p>
+
+                                        </td>
+                                        <td>
+
+                                            <p className=" text-sm">
+                                                {allUser.created_date}
+                                            </p>
+
+                                        </td>
+                                        <td>
+
+                                            <p className=" text-sm">
+                                                {allUser.modified_date}
+                                            </p>
+
+                                        </td>
+
+
+
+
+
                                         <td className="">
                                             <div className="flex items-center ">
                                                 <Link to={`/allHome/details/${allUser.id}`}>
@@ -184,7 +184,7 @@ const AllUsers = () => {
 
 
                                                 <button
-                                                onClick={() => handleDelete(allUser.id)}
+                                                    onClick={() => handleDelete(allUser.id)}
                                                 >
                                                     <label
                                                         className="w-8 h-8 bg-red-200 inline-block rounded-full text-center cursor-pointer group hover:bg-red-500 duration-300 mr-1"
@@ -207,25 +207,25 @@ const AllUsers = () => {
                     </table>
                 </div>
                 <div className=" mt-5 paigination">
-      {
-        pages.map((page, index) =>
-          <button
-            key={index + 1}
-            onClick={() => setCurrentPage(page)}
-            className=
+                    {
+                        pages.map((page, index) =>
+                            <button
+                                key={index + 1}
+                                onClick={() => setCurrentPage(page)}
+                                className=
 
-            {page === currentPage ? 'active' : ''}
-          >{page}</button>
-        )
-      }
+                                {page === currentPage ? 'active' : ''}
+                            >{page}</button>
+                        )
+                    }
 
-    </div>
+                </div>
 
             </div>
         </div>
 
 
-    </div>
+
     );
 };
 
