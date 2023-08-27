@@ -1,16 +1,13 @@
-
 import React from 'react';
 import AdminPageList from '../../View/Admin/College/AdminPageList';
 
-
-
-const admin_page_list = () => {
+const admin_page_list_Controller = () => {
     return (
         <div>
-            <AdminPageList ></AdminPageList>
+            <AdminPageList></AdminPageList>
+            
         </div>
     );
 };
 
-export default admin_page_list;
-
+export default admin_page_list_Controller;

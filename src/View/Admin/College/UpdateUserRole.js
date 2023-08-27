@@ -63,7 +63,7 @@ const { data: userRoleUpdate = [], isLoading, refetch
                                 <div className="mt-6 lg:flex md:flex items-center">
                                     <div className="w-60">
                                         <label htmlFor="">
-                                            Product Name
+                                             Name
                                             <sup>
                                                 <span className="text-red-500 mr-1">*</span>
                                             </sup>
@@ -76,6 +76,26 @@ const { data: userRoleUpdate = [], isLoading, refetch
                                         placeholder="Product Name"
                                         type="text"
                                         className="input input-bordered mt-1 w-full rounded-sm"
+                                    />
+                                </div>
+                                <div className="mt-6 lg:flex md:flex items-center">
+                                    <div className="w-60">
+                                        <label htmlFor="">
+                                            Updated Date
+                                            <sup>
+                                                <span className="text-red-500 mr-1">*</span>
+                                            </sup>
+                                        </label>
+                                    </div>
+                                    <input
+                                        onChange={handleChange}
+                                       
+                                        name='modified_date'
+                                        placeholder="Product Name"
+                                        type="date"
+                                        className="input input-bordered mt-1 w-full rounded-sm"
+                                        required
+                                        
                                     />
                                 </div>
                             </div>
