@@ -3,8 +3,8 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className='mt-[700px] lg:mt-0'>
-            <footer className="footer bg-slate-700 text-white footer-center p-10  ">
+        <div>
+            <footer className="footer footer-center p-10  text-white bg-slate-500 ">
                 <div className="grid grid-flow-col gap-4">
                     <a className="link link-hover">About us</a>
                     <a className="link link-hover">Contact</a>

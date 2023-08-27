@@ -1,4 +1,6 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { HiTrash, HiEye, HiPencilAlt } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 
@@ -7,23 +9,54 @@ const AllUsers = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(10)
 
-    const [adminPageList, setAdminPageList] = useState([])
-    useEffect(() => {
-      fetch('http://localhost:5002/all-users/all-users')
-        .then(Response => Response.json())
-        .then(data => setAdminPageList(data))
-    }, [])
-    console.log(adminPageList)
+  
+
+    const { data: users = [], isLoading, refetch
+    } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5002/all-users/all-users`)
+            const data = await res.json()
+            return data
+        }
+    })
+
+
+    console.log(users)
+
+
 
     const lastPostIndex = currentPage * postsPerPage
     const firstPosIndex = lastPostIndex - postsPerPage
-    const allUsers = adminPageList.slice(firstPosIndex, lastPostIndex)
+    const allUsers = users.slice(firstPosIndex, lastPostIndex)
   
-    let totalPosts = adminPageList.length
+    let totalPosts = users.length
     let pages = []
   
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
       pages.push(i)
+    }
+
+
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Are You Sure delete')
+        console.log(id)
+        if (proceed) {
+            fetch(`http://localhost:5002/all-users/all-users/${id}`, {
+                method: "DELETE",
+
+            })
+                .then(Response => Response.json())
+                .then(data => {
+                    refetch()
+                    toast.success('Delete Successfully')
+                    console.log(data)
+                    // if (data.deletedCount > 0) {
+                    // }
+
+                })
+        }
     }
 
 
@@ -151,7 +184,7 @@ const AllUsers = () => {
 
 
                                                 <button
-                                                // onClick={() => handleDelete(allUser._id)}
+                                                onClick={() => handleDelete(allUser.id)}
                                                 >
                                                     <label
                                                         className="w-8 h-8 bg-red-200 inline-block rounded-full text-center cursor-pointer group hover:bg-red-500 duration-300 mr-1"

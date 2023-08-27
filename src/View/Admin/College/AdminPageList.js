@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { HiTrash, HiEye, HiPencilAlt } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import './style.css'
+import { toast } from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
 
 
 
@@ -10,12 +12,17 @@ const AdminPageList = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(10)
 
-    const [adminPageList, setAdminPageList] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5002/admin/all-admin')
-            .then(Response => Response.json())
-            .then(data => setAdminPageList(data))
-    }, [])
+   
+    const { data: adminPageList = [], isLoading, refetch
+    } = useQuery({
+        queryKey: ['adminPageList'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5002/admin/all-admin')
+            const data = await res.json()
+            return data
+        }
+    })
+
     console.log(adminPageList)
 
     const lastPostIndex = currentPage * postsPerPage
@@ -27,6 +34,26 @@ const AdminPageList = () => {
 
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
         pages.push(i)
+    }
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Are You Sure delete')
+        console.log(id)
+        if (proceed) {
+            fetch(`http://localhost:5002/admin/all-admin/${id}`, {
+                method: "DELETE",
+
+            })
+                .then(Response => Response.json())
+                .then(data => {
+                    refetch()
+                    toast.success('Delete Successfully')
+                    console.log(data)
+                    // if (data.deletedCount > 0) {
+                    // }
+
+                })
+        }
     }
 
 
@@ -112,7 +139,7 @@ const AdminPageList = () => {
 
 
                                                     <button
-                                                    // onClick={() => handleDelete(admin._id)}
+                                                        onClick={() => handleDelete(admin.id)}
                                                     >
                                                         <label
                                                             className="w-8 h-8 bg-red-200 inline-block rounded-full text-center cursor-pointer group hover:bg-red-500 duration-300 mr-1"

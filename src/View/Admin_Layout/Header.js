@@ -43,7 +43,7 @@ const Header = () => {
             {/* Header End */}
 
             {/* left side nav start */}
-            <div className="drawer-side " >
+            <div className="drawer-side h-full" >
             <label htmlFor="my-drawer" className=" drawer-overlay "></label>
                 <ul className="menu p-4 w-80 lg:mt-[-25px] h-full bg-base-200 text-base-content">
                     <LeftSideNav></LeftSideNav>
