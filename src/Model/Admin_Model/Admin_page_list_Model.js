@@ -1,5 +1,5 @@
 const connection = require('../../Connection/connection')
-const post = {
+const AdminPageListModel = {
     getAll: async (req, res) => {
         try {
             const data = "select * from 	admin_page_list";
@@ -41,4 +41,4 @@ const post = {
 }
 
 
-module.exports = post
+module.exports = AdminPageListModel

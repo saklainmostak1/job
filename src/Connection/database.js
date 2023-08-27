@@ -1,4 +1,4 @@
-// index.js
+
 const express = require('express')
 const app = express()
 require('dotenv').config()
@@ -13,11 +13,11 @@ app.use(express.json())
 
 
 
-const router = require('./dbRouter')
-const userRouter = require('./userRouter')
+const adminPageListRouter = require('../Router/Admin_Page_LIst_Router')
+const userRolePermission = require('../Router/User_Role_Permission_Router')
 
-app.use('/admin', router)
-app.use('/user', userRouter)
+app.use('/admin', adminPageListRouter)
+app.use('/user', userRolePermission)
 
 
 
@@ -29,7 +29,7 @@ app.listen(port, (req, res) => {
     console.log('api is running on', port);
 })
 
-module.export = router
+// module.export = router
 
 
 

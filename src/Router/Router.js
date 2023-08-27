@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Main from "./Main";
+
 import AdminPageList from "../View/Admin/Admin_Page_list/AdminPageList";
 import UserRole from '../View/Admin/Admin_Page_list/UserRole';
 import UserRolePermission from '../View/Admin/Admin_Page_list/UserRolePermission'
+import Main from "../Connection/Main";
 
 
 
@@ -11,7 +12,7 @@ import UserRolePermission from '../View/Admin/Admin_Page_list/UserRolePermission
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Main></Main>,
+        element:<Main></Main> ,
         children: [
             {
                         path: '/api/all-admin',
