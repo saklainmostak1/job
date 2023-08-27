@@ -5,6 +5,7 @@ import AdminPageList from "../View/Admin/College/AdminPageList";
 import UserRolePermission from "../View/Admin/College/UserRolePermission";
 import UserRole from "../View/Admin/College/UserRole";
 import AllUsers from "../View/Admin/College/AllUsers";
+import UpdateUserRole from "../View/Admin/College/UpdateUserRole";
 
 
 
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
             {
                         path: '/api/all-users',
                         element: <AllUsers></AllUsers>
+            },
+            {
+                        path: '/api/all-users-role/update/:id',
+                        element: <UpdateUserRole></UpdateUserRole>
             },
         ]
     }

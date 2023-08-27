@@ -26,7 +26,7 @@ const UserRolePermission = () => {
 
     const lastPostIndex = currentPage * postsPerPage
     const firstPosIndex = lastPostIndex - postsPerPage
-    const userRolePermission = userRolesPermissions.slice(firstPosIndex, lastPostIndex)
+    const userRolePermission = userRolesPermissions?.slice(firstPosIndex, lastPostIndex)
   
     let totalPosts = userRolesPermissions.length
     let pages = []
@@ -112,7 +112,7 @@ const UserRolePermission = () => {
                                         <td>
                                             
                                                 <p className=" text-sm">
-                                                    {rolePermission.user_page_list_id.slice(0,30) + '...'}
+                                                    {rolePermission.user_page_list_id?.slice(0,30) + '...'}
                                                 </p>
                                           
                                         </td>

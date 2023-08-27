@@ -137,7 +137,7 @@ const UserRole = () => {
                                       
                                         <td className="">
                                             <div className="flex items-center ">
-                                                <Link to={`/allHome/details/${userRole.id}`}>
+                                                <Link to={`/allHome/details/${userRole?.id}`}>
 
                                                     <label
                                                         className="w-8 h-8 bg-green-200 inline-block rounded-full text-center cursor-pointer group hover:bg-green-500 duration-300 mr-1"
@@ -148,7 +148,7 @@ const UserRole = () => {
                                                         </p>
                                                     </label>
                                                 </Link>
-                                                <Link to={`/dashboard/update/userRoles/${userRole.id}`}>
+                                                <Link to={`/api/all-users-role/update/${userRole.id}`}>
 
                                                     <label
                                                         className="w-8 h-8 bg-blue-200 inline-block rounded-full text-center cursor-pointer group hover:bg-blue-500 duration-300 mr-1"

@@ -1,4 +1,5 @@
 const connection = require('../../Connection/connection')
+
 const userRolePermission = {
     getAllUserRole: async (req, res) => {
         try {
