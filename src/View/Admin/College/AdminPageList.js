@@ -45,10 +45,6 @@ const AdminPageList = () => {
 
                         </label>
                     </div>
-
-
-
-
                 </div>
                 <div className="mt-8 bg-white p-7 rounded-xl">
 
@@ -88,11 +84,6 @@ const AdminPageList = () => {
                                                 </p>
 
                                             </td>
-
-
-
-
-
                                             <td className="">
                                                 <div className="flex items-center ">
                                                     <Link to={`/allHome/details/${admin.id}`}>
