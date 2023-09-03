@@ -7,6 +7,7 @@ const User_Role_Controller = () => {
         <div>
             <UserRole></UserRole>
             <UpdateUserRole></UpdateUserRole>
+            
         </div>
     );
 };

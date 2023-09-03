@@ -10,7 +10,7 @@ userRouter.get('/all-users-role-permission', userRolePermission.getAllUserRolePe
 userRouter.get('/all-users-role-permission/:id', userRolePermission.getSingleUserRolePermission)
 userRouter.delete('/all-users-role-permission/:id', userRolePermission.deleteSingleUserRoleOermission)
 
-
+ 
 
 
 

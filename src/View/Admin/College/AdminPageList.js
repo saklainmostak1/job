@@ -5,23 +5,19 @@ import './style.css'
 import { toast } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 
+// const AdminPageListModel = require('../../../Model/Admin_Model/Admin_page_list_Model')
 
 
-const AdminPageList = () => {
+
+const AdminPageList = ({adminPageList, refetch}) => {
+
+console.log(adminPageList)
 
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(10)
 
    
-    const { data: adminPageList = [], isLoading, refetch
-    } = useQuery({
-        queryKey: ['adminPageList'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5002/admin/all-admin')
-            const data = await res.json()
-            return data
-        }
-    })
+  
 
     console.log(adminPageList)
 
@@ -29,7 +25,7 @@ const AdminPageList = () => {
     const firstPosIndex = lastPostIndex - postsPerPage
     const allAdminsPageList = adminPageList?.slice(firstPosIndex, lastPostIndex)
 
-    let totalPosts = adminPageList.length
+    let totalPosts = adminPageList?.length
     let pages = []
 
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {

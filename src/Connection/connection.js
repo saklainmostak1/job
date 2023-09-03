@@ -7,7 +7,7 @@ var connections = mysql.createConnection({
 });
 connections.query(function (error) {
   if (!!error) {
-    const data = "select * from 	student_details";
+    const data = "select * from 	users";
     connections.query(data, function (error, result) {
       console.log(result)
     })
